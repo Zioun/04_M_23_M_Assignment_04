@@ -1,6 +1,6 @@
-let info = { name: "toky" , birthYear: 200, siteName: "Facebook" }
+let obj = { name: "kolimuddin" , birthYear: 1999 , siteName: "google" }
 function password(obj) {
-    let lengthOfString = info.birthYear.toString().length;
+    let lengthOfString = obj.birthYear.toString().length;
     if(typeof obj.name === "string" && typeof obj.birthYear === "number" && typeof obj.siteName === "string" && lengthOfString > 3 && lengthOfString < 5){
         let upperCase = obj.siteName[0].toUpperCase();
         let lowerCase = obj.siteName.slice(1);
@@ -10,7 +10,7 @@ function password(obj) {
         return "invalid";
     }
 }
-let result = password(info);
-console.log(result);
+let result = password(obj);
+console.log(result)
 
 

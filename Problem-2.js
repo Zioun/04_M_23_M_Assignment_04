@@ -1,7 +1,8 @@
 function checkName(name) {
     if(typeof name === "string"){
-        let xyz = name.slice(-1);
-        if(xyz === 'A' || xyz === 'a' || xyz === 'Y' || xyz === 'y' || xyz === 'I' || xyz === 'i' || xyz === 'E' || xyz === 'e' || xyz === 'O' || xyz === 'o' || xyz === 'U' || xyz === 'u' || xyz === 'W' || xyz === 'w'){
+        let xyz = name.slice(-1).toLowerCase();
+        
+        if(xyz === 'a' || xyz === 'y' || xyz === 'i' || xyz === 'e' || xyz === 'o' || xyz === 'u' || xyz === 'w'){
             return "Good Name";
         }else{
             return "Bad Name"
@@ -11,6 +12,5 @@ function checkName(name) {
         return "invalid";
     }
 }
-    
-let result = checkName("Abdullah");
-console.log(result);
+
+console.log(checkName('Sadia'));

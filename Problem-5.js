@@ -1,19 +1,21 @@
-function monthlySavings(arr , livingCost) {
-    let sum = 0;
-    for(let item of arr){
-        sum += item;
-    }
-    let cost = sum - livingCost;
-    console.log(cost)
-    if(sum >= 3000){
-        let tax = sum / 100 * 20;
-        console.log(tax)
-        // let savings = cost - tax;
-        // console.log(savings);
-    }
-}
-let earn = [ 1000 , 2000 , 3000 ];
-let livingCost = 5400;
 
-let result = monthlySavings(earn, livingCost);
-console.log(result);
+function monthlySavings(arr , livingCost) {
+    if(typeof arr !== Array.isArray && typeof livingCost !== "number"){
+        return "invalid input";
+    }
+    let amount = 0;
+    for(let item of arr){
+        if(item >= 3000){
+            let taxCalulate = item / 100 * 20;
+            let minusTax = item - taxCalulate;
+            amount += minusTax;
+        }else{
+            amount += item;
+        }
+    }
+    let savings = amount - livingCost;
+    if(savings < 0){
+        return "Earn More";
+    }
+    return savings; 
+}

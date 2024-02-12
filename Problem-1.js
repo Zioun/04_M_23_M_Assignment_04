@@ -10,6 +10,4 @@ function calculateMoney(ticketSale) {
         return "Invalid Number";
     }
 }
-let result = calculateMoney(10);
-console.log(result);
 

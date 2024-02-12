@@ -1,0 +1,96 @@
+<script>
+window.sa5 = window.sa5 || [];
+window.sa5.push(['getMembershipConfig', 
+  (config) => {
+    config.accessGroupsFolder = '/sa5-ag';
+    config.accessGroups = [
+      'free', 'basic', 'pro', 'premium'
+    ];
+    return config;
+  }]); 
+</script>
+
+<!-- Sygnal Attributes 5 | Memberships BETA -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@5.3.4/dist/css/webflow-membership.css"> 
+<script defer src="https://cdn.jsdelivr.net/gh/sygnaltech/webflow-util@5.3.4/dist/nocode/webflow-membership.js"></script>
+<script>
+window.sa5 = window.sa5 || [];
+window.sa5.push(['getMembershipConfig', 
+  (config) => {
+    config.accessGroupsFolder = '/sa5-ag';
+    config.accessGroups = [
+      'free', 'basic', 'pro', 'premium'
+    ];
+    return config;
+  }]); 
+window.sa5.push(['userInfoChanged', 
+  (user) => {
+    console.log("USER INFO CHANGED", user); 
+
+  }]);   
+</script>
+
+<script> 
+window.sa5.push(['userInfoChanged', 
+  (user) => {
+    
+    // Check to see if access_groups info is loaded
+    if(user.user_data_loaded.access_groups) {
+    
+      // Make changes to the page when the current user
+      // is in the 'pro' access group.
+      if(user.access_groups.includes('pro')) {
+        
+        // Do whatever you want to your page
+        
+      }
+    
+      // Make changes to the page when the current user
+      // is NOT in the 'pro' access group. ( notice the ! operator )
+      if(!user.access_groups.includes('pro')) {
+        
+        // Do whatever you want to your page
+        
+      }    
+      
+    }
+    
+  }]); 
+</script>
+
+<script> 
+window.sa5.push(['userInfoChanged', 
+  (user) => {
+    
+    // Check to see if access_groups info is loaded
+    if(user.user_data_loaded.access_groups) {
+  
+      // Find all elements tagged [access-group]
+      // and set the inner text to YES | NO
+      const elements = document.querySelectorAll('.access-group-pro');
+      elements.forEach(element => {
+      
+        if(user.access_groups.includes('pro')) {
+        
+          // If the user is in the 'pro' access group, remove our global class
+          // this will make the element visible
+          element.classList.remove('access-group-pro');
+
+          // by Nayeem start
+          let isLtp = document.querySelector("#is-ltp");
+          isLtp.style.color = 'red';
+          // by Nayeem Ended
+
+        } else {
+        
+          // If the user is NOT in the 'pro' access group, remove the element
+          element.remove();
+          
+        }
+      
+      });
+      
+    }
+    
+  }]); 
+</script>
